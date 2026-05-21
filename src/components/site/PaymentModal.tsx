@@ -4,14 +4,14 @@ import { X, Lock, CreditCard, CheckCircle2, Loader2 } from "lucide-react";
 type Method = "webpay" | "mercadopago";
 
 const services = [
-  { id: "medico", label: "Médico a domicilio", price: 55000 },
-  { id: "enfermeria", label: "Enfermería domiciliaria", price: 35000 },
-  { id: "adulto", label: "Cuidado adulto mayor (día)", price: 45000 },
-  { id: "postop", label: "Cuidado postoperatorio", price: 60000 },
-  { id: "control", label: "Control clínico", price: 30000 },
-  { id: "plan-basico", label: "Plan Básico (mensual)", price: 380000 },
-  { id: "plan-integral", label: "Plan Integral (mensual)", price: 690000 },
-  { id: "plan-premium", label: "Plan Premium (mensual)", price: 1190000 },
+  { id: "medico", label: "Médico a domicilio (consulta)", price: 80000 },
+  { id: "enfermeria", label: "Enfermería domiciliaria (consulta)", price: 50000 },
+  { id: "adulto", label: "Cuidado adulto mayor (día)", price: 110000 },
+  { id: "postop", label: "Cuidado postoperatorio (día)", price: 120000 },
+  { id: "plan-basico", label: "Plan Básico (mensual)", price: 1550000 },
+  { id: "plan-integral", label: "Plan Integral (mensual)", price: 3100000 },
+  { id: "plan-premium", label: "Plan Premium (mensual)", price: 4100000 },
+  { id: "plan-personalizado", label: "Plan Personalizado (cotización)", price: 0 },
 ];
 
 const fmt = (n: number) => new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(n);
