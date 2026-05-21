@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { waLink } from "@/lib/contact";
+import logo from "@/assets/logo.png";
 
 const links = [
   { href: "#inicio", label: "Inicio" },
@@ -30,13 +31,11 @@ export function Header() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8 h-18 md:h-20 flex items-center justify-between py-3">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-[color:var(--brand)] to-[color:var(--brand-deep)] grid place-items-center text-white font-display font-bold shadow-soft">
-            MB
-          </div>
+        <Link to="/" className="flex items-center gap-3 group">
+          <img src={logo} alt="Servicios Médicos MB" className="h-12 w-12 object-contain" />
           <div className="flex flex-col leading-tight">
             <span className="font-display font-bold text-brand-deep text-base">Servicios Médicos MB</span>
-            <span className="text-[11px] tracking-wide text-ink uppercase">Cuidado premium a domicilio</span>
+            <span className="text-[11px] tracking-wide text-ink uppercase">Cuidamos lo que más importa</span>
           </div>
         </Link>
 

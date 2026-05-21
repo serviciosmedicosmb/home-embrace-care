@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { MessageCircle, Phone, CreditCard, Lock } from "lucide-react";
 import { waLink } from "@/lib/contact";
+import { PaymentModal } from "./PaymentModal";
 
 export function CTA() {
+  const [method, setMethod] = useState<"webpay" | "mercadopago" | null>(null);
   return (
     <section id="contacto" className="py-20 md:py-28 bg-brand-deep relative overflow-hidden">
       <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[color:var(--brand)]/30 blur-3xl" aria-hidden />
@@ -29,17 +32,18 @@ export function CTA() {
             <Lock className="h-4 w-4" /> Pago seguro online
           </div>
           <h3 className="mt-3 text-2xl font-display font-bold text-white">Pagar servicio online</h3>
-          <p className="mt-2 text-white/70 text-sm">Próximamente disponible con WebPay y Mercado Pago.</p>
+          <p className="mt-2 text-white/70 text-sm">Elige tu medio de pago preferido y completa tus datos.</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <button className="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 px-5 py-3 text-white font-display font-semibold text-sm transition">
-              <CreditCard className="h-4 w-4" /> WebPay
+            <button onClick={() => setMethod("webpay")} className="inline-flex items-center gap-2 rounded-full bg-white text-brand-deep hover:shadow-card border border-white/15 px-6 py-3 font-display font-semibold text-sm transition hover:-translate-y-0.5">
+              <CreditCard className="h-4 w-4" /> Pagar con WebPay
             </button>
-            <button className="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 px-5 py-3 text-white font-display font-semibold text-sm transition">
-              <CreditCard className="h-4 w-4" /> Mercado Pago
+            <button onClick={() => setMethod("mercadopago")} className="inline-flex items-center gap-2 rounded-full bg-[#00B1EA] text-white hover:shadow-card border border-white/15 px-6 py-3 font-display font-semibold text-sm transition hover:-translate-y-0.5">
+              <CreditCard className="h-4 w-4" /> Pagar con Mercado Pago
             </button>
           </div>
         </div>
       </div>
+      <PaymentModal open={!!method} method={method} onClose={() => setMethod(null)} />
     </section>
   );
 }
