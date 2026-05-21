@@ -34,7 +34,7 @@ export function CTA() {
           <h3 className="mt-3 text-2xl font-display font-bold text-white">Pagar servicio online</h3>
           <p className="mt-2 text-white/70 text-sm">Elige tu medio de pago preferido y completa tus datos.</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <button onClick={() => setMethod("webpay")} className="inline-flex items-center gap-2 rounded-full bg-white text-brand-deep hover:shadow-card border border-white/15 px-6 py-3 font-display font-semibold text-sm transition hover:-translate-y-0.5">
+            <button onClick={() => setMethod("webpay")} className="inline-flex items-center gap-2 rounded-full bg-white text-[#E60028] hover:shadow-card border-2 border-[#E60028] px-6 py-3 font-display font-semibold text-sm transition hover:-translate-y-0.5">
               <CreditCard className="h-4 w-4" /> Pagar con WebPay
             </button>
             <button onClick={() => setMethod("mercadopago")} className="inline-flex items-center gap-2 rounded-full bg-[#00B1EA] text-white hover:shadow-card border border-white/15 px-6 py-3 font-display font-semibold text-sm transition hover:-translate-y-0.5">

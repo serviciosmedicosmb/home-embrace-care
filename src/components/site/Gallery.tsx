@@ -3,13 +3,13 @@ import nurse from "@/assets/service-nurse.jpg";
 import elderly from "@/assets/service-elderly.jpg";
 import bedridden from "@/assets/service-bedridden.jpg";
 import postop from "@/assets/service-postop.jpg";
-import control from "@/assets/service-control.jpg";
+import companion from "@/assets/service-companion.jpg";
 
 const imgs = [
   { src: elderly, alt: "Cuidado adulto mayor", span: "row-span-2" },
   { src: doctor, alt: "Médico a domicilio", span: "" },
-  { src: nurse, alt: "Enfermería", span: "" },
-  { src: control, alt: "Control clínico", span: "row-span-2" },
+  { src: nurse, alt: "Enfermería domiciliaria", span: "" },
+  { src: companion, alt: "Acompañamiento y compañía", span: "row-span-2" },
   { src: postop, alt: "Cuidado postoperatorio", span: "" },
   { src: bedridden, alt: "Atención a paciente postrado", span: "" },
 ];
@@ -30,7 +30,7 @@ export function Gallery() {
                 src={i.src}
                 alt={i.alt}
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>

@@ -8,12 +8,12 @@ import controlImg from "@/assets/service-control.jpg";
 import { waLink } from "@/lib/contact";
 
 const services = [
-  { Icon: Stethoscope, title: "Médico a domicilio", desc: "Consulta médica integral en tu hogar con profesionales colegiados.", img: doctorImg },
-  { Icon: Syringe, title: "Enfermería domiciliaria", desc: "Curaciones, inyecciones, sueros y procedimientos clínicos seguros.", img: nurseImg },
-  { Icon: Users, title: "Cuidados adulto mayor", desc: "Acompañamiento, higiene, alimentación y compañía profesional.", img: elderlyImg },
-  { Icon: Bed, title: "Pacientes postrados", desc: "Cuidado especializado, prevención de escaras y movilización.", img: bedriddenImg },
-  { Icon: Bandage, title: "Cuidados postoperatorios", desc: "Recuperación segura en casa con seguimiento clínico continuo.", img: postopImg },
-  { Icon: Activity, title: "Control clínico", desc: "Monitoreo de signos vitales, medicamentos y reportes familiares.", img: controlImg },
+  { Icon: Stethoscope, title: "Médico a domicilio", desc: "Consulta médica integral en tu hogar con profesionales colegiados.", img: doctorImg, price: "$80.000 / consulta" },
+  { Icon: Syringe, title: "Enfermería domiciliaria", desc: "Curaciones, inyecciones, sueros y procedimientos clínicos seguros.", img: nurseImg, price: "$50.000 / consulta" },
+  { Icon: Users, title: "Cuidados adulto mayor", desc: "Acompañamiento, higiene, alimentación y compañía profesional.", img: elderlyImg, price: "$110.000 / día" },
+  { Icon: Bed, title: "Pacientes postrados", desc: "Cuidado especializado, prevención de escaras y movilización.", img: bedriddenImg, price: "Desde $110.000 / día" },
+  { Icon: Bandage, title: "Cuidados postoperatorios", desc: "Recuperación segura en casa con seguimiento clínico continuo.", img: postopImg, price: "$120.000 / día" },
+  { Icon: Activity, title: "Control clínico", desc: "Monitoreo de signos vitales, medicamentos y reportes familiares.", img: controlImg, price: "Cotización a medida" },
 ];
 
 export function Services() {
@@ -27,23 +27,26 @@ export function Services() {
         </div>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(({ Icon, title, desc, img }) => (
+          {services.map(({ Icon, title, desc, img, price }) => (
             <article key={title} className="card-premium overflow-hidden flex flex-col">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
                   src={img}
                   alt={title}
                   loading="lazy"
-                  width={1024}
-                  height={768}
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  width={1280}
+                  height={960}
+                  className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute top-4 left-4 h-11 w-11 rounded-xl bg-white/95 backdrop-blur grid place-items-center text-brand shadow-soft">
                   <Icon className="h-5 w-5" />
                 </div>
               </div>
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg font-display font-bold">{title}</h3>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-lg font-display font-bold">{title}</h3>
+                  <span className="shrink-0 text-xs font-display font-semibold text-brand bg-brand-soft px-2.5 py-1 rounded-full">{price}</span>
+                </div>
                 <p className="mt-2 text-ink text-sm leading-relaxed flex-1">{desc}</p>
                 <a
                   href={waLink(`Hola, quiero cotizar el servicio de ${title}.`)}
