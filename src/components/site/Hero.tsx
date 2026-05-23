@@ -51,20 +51,11 @@ export function Hero() {
           <div className="relative rounded-[2rem] overflow-hidden shadow-card border border-white">
             <img
               src={heroImg}
-              alt="Profesional de salud cuidando a una adulta mayor en casa"
+              alt="Médico profesional a domicilio atendiendo con calidez"
               width={1280}
               height={1280}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover object-[center_25%]"
             />
-          </div>
-          <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-card px-5 py-4 flex items-center gap-3 border border-[color:var(--brand-soft)]">
-            <div className="h-12 w-12 rounded-full bg-brand-soft grid place-items-center text-brand">
-              <ShieldCheck className="h-6 w-6" />
-            </div>
-            <div>
-              <p className="text-xs text-ink">Más de</p>
-              <p className="font-display font-bold text-brand-deep">+1.500 familias atendidas</p>
-            </div>
           </div>
         </div>
       </div>
