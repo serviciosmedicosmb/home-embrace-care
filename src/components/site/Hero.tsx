@@ -1,5 +1,5 @@
 import { MessageCircle, ClipboardList, ShieldCheck, Clock, MapPin } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/service-doctor.jpg";
 import { waLink } from "@/lib/contact";
 
 export function Hero() {
