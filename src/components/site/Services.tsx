@@ -9,9 +9,9 @@ import { waLink } from "@/lib/contact";
 
 const services = [
   { Icon: Stethoscope, title: "Médico a domicilio", desc: "Consulta médica integral en tu hogar con profesionales colegiados.", img: doctorImg, price: "$80.000 / consulta" },
-  { Icon: Syringe, title: "Enfermería domiciliaria", desc: "Curaciones, inyecciones, sueros y procedimientos clínicos seguros.", img: nurseImg, price: "$50.000 / consulta" },
+  { Icon: Syringe, title: "Enfermería domiciliaria", desc: "Curaciones, inyecciones, sueros y procedimientos clínicos seguros.", img: nurseImg, price: "$60.000 / consulta" },
   { Icon: Users, title: "Cuidados adulto mayor", desc: "Acompañamiento, higiene, alimentación y compañía profesional.", img: elderlyImg, price: "$110.000 / día" },
-  { Icon: Bed, title: "Pacientes postrados", desc: "Cuidado especializado, prevención de escaras y movilización.", img: bedriddenImg, price: "Desde $110.000 / día" },
+  { Icon: Bed, title: "Pacientes postrados", desc: "Cuidado especializado, prevención de escaras y movilización.", img: bedriddenImg, price: "$120.000 / día" },
   { Icon: Bandage, title: "Cuidados postoperatorios", desc: "Recuperación segura en casa con seguimiento clínico continuo.", img: postopImg, price: "$120.000 / día" },
   { Icon: Activity, title: "Control clínico", desc: "Monitoreo de signos vitales, medicamentos y reportes familiares.", img: controlImg, price: "Cotización a medida" },
 ];
