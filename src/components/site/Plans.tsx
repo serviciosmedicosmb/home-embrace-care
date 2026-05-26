@@ -7,24 +7,24 @@ const fmtCLP = (n: number) =>
 const plans = [
   {
     name: "Plan Básico",
-    price: 1550000,
+    price: 1549990,
     desc: "Apoyo esencial para mantener tranquilidad diaria.",
     features: [
       "Cuidadora 12 horas",
-      "Supervisión de medicamentos",
-      "Control de signos vitales",
+      "Supervisión básica y de medicamentos",
+      "Visita mensual del médico",
       "Informe familiar semanal",
     ],
     highlight: false,
   },
   {
     name: "Plan Integral",
-    price: 3100000,
+    price: 3199900,
     desc: "El más solicitado por familias que buscan continuidad.",
     features: [
       "Cuidadora 24 horas",
-      "Enfermería 2 veces por semana",
-      "Médico 1 vez por semana",
+      "Enfermería 2 veces al mes",
+      "Médico 1 vez al mes",
       "Coordinación clínica",
       "Informe familiar y seguimiento",
     ],
@@ -32,7 +32,7 @@ const plans = [
   },
   {
     name: "Plan Premium",
-    price: 4100000,
+    price: 4199900,
     desc: "Atención clínica completa y personalizada.",
     features: [
       "Atención integral 24/7",
