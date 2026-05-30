@@ -5,7 +5,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { waLink } from "@/lib/contact";
-import heroImg from "@/assets/service-doctor.jpg";
+import heroImg from "@/assets/medico-domicilio-hero.jpg";
 
 export const Route = createFileRoute("/medico-a-domicilio")({
   component: MedicoDomicilioPage,
@@ -104,7 +104,7 @@ function MedicoDomicilioPage() {
             <div className="relative animate-fade">
               <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[color:var(--brand)]/20 to-transparent blur-2xl" aria-hidden />
               <div className="relative rounded-[2rem] overflow-hidden shadow-card border border-white">
-                <img src={heroImg} alt="Médico profesional atendiendo a paciente en su hogar" width={1280} height={1280} className="w-full h-auto object-cover object-[center_25%]" />
+                <img src={heroImg} alt="Médico profesional atendiendo a paciente adulto mayor en su hogar" width={1408} height={1146} className="w-full h-auto object-cover" />
               </div>
             </div>
           </div>
