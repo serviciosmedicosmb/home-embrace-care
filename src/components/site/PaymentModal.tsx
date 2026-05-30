@@ -4,13 +4,15 @@ import { X, Lock, CreditCard, CheckCircle2, Loader2 } from "lucide-react";
 type Method = "webpay" | "mercadopago";
 
 const services = [
-  { id: "medico", label: "Médico a domicilio (consulta)", price: 80000 },
-  { id: "enfermeria", label: "Enfermería domiciliaria (consulta)", price: 50000 },
-  { id: "adulto", label: "Cuidado adulto mayor (día)", price: 110000 },
-  { id: "postop", label: "Cuidado postoperatorio (día)", price: 120000 },
-  { id: "plan-basico", label: "Plan Básico (mensual)", price: 1550000 },
-  { id: "plan-integral", label: "Plan Integral (mensual)", price: 3100000 },
-  { id: "plan-premium", label: "Plan Premium (mensual)", price: 4100000 },
+  { id: "medico", label: "Médico a domicilio (consulta)", price: 79990 },
+  { id: "enfermeria", label: "Enfermería domiciliaria (consulta)", price: 49990 },
+  { id: "adulto", label: "Cuidado adulto mayor (12h)", price: 59990 },
+   { id: "adulto", label: "Cuidado adulto mayor (24h)", price: 109990 },
+  { id: "postop", label: "Cuidado postoperatorio (12h)", price: 79990 },
+    { id: "postop", label: "Cuidado postoperatorio (24h)", price: 149990 },
+  { id: "plan-basico", label: "Plan Básico (mensual)", price: 1549990 },
+  { id: "plan-integral", label: "Plan Integral (mensual)", price: 3199990 },
+  { id: "plan-premium", label: "Plan Premium (mensual)", price: 4199990 },
   { id: "plan-personalizado", label: "Plan Personalizado (cotización)", price: 0 },
 ];
 
