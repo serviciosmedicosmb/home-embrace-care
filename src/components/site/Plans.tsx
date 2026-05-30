@@ -19,7 +19,7 @@ const plans = [
   },
   {
     name: "Plan Integral",
-    price: 3199900,
+    price: 3199990,
     desc: "El más solicitado por familias que buscan continuidad.",
     features: [
       "Cuidadora 24 horas",
@@ -32,7 +32,7 @@ const plans = [
   },
   {
     name: "Plan Premium",
-    price: 4199900,
+    price: 4199990,
     desc: "Atención clínica completa y personalizada.",
     features: [
       "Atención integral 24/7",
