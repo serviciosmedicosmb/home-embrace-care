@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, ChevronDown } from "lucide-react";
 import { waLink } from "@/lib/contact";
 import logo from "@/assets/logo.png";
 
-const links = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#planes", label: "Planes" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#testimonios", label: "Testimonios" },
-  { href: "#contacto", label: "Contacto" },
+type NavItem =
+  | { type: "link"; href: string; label: string; hash?: boolean }
+  | { type: "dropdown"; label: string; children: { to: string; label: string }[] };
+
+const nav: NavItem[] = [
+  { type: "link", href: "/", label: "Inicio" },
+  {
+    type: "dropdown",
+    label: "Servicios",
+    children: [{ to: "/medico-a-domicilio", label: "Médico a Domicilio" }],
+  },
+  { type: "link", href: "/#nosotros", label: "Nosotros" },
+  { type: "link", href: "/#contacto", label: "Contacto" },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -40,15 +47,44 @@ export function Header() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-brand-deep/80 hover:text-[color:var(--brand)] transition-colors relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-[color:var(--brand)] hover:after:w-full after:transition-all after:duration-300"
-            >
-              {l.label}
-            </a>
-          ))}
+          {nav.map((item) =>
+            item.type === "link" ? (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-brand-deep/80 hover:text-[color:var(--brand)] transition-colors relative after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-0 after:bg-[color:var(--brand)] hover:after:w-full after:transition-all after:duration-300"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button className="inline-flex items-center gap-1 text-sm font-medium text-brand-deep/80 hover:text-[color:var(--brand)] transition-colors">
+                  {item.label}
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+                {servicesOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[240px] animate-fade">
+                    <div className="rounded-2xl bg-white shadow-card border border-[color:var(--brand-soft)] p-2">
+                      {item.children.map((c) => (
+                        <Link
+                          key={c.to}
+                          to={c.to}
+                          className="block px-4 py-3 rounded-xl text-sm font-medium text-brand-deep hover:bg-brand-soft transition"
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )
+          )}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -68,16 +104,34 @@ export function Header() {
       {open && (
         <div className="lg:hidden border-t border-[color:var(--brand-soft)] bg-white animate-fade">
           <nav className="px-5 py-4 flex flex-col gap-1">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="py-3 px-3 rounded-xl text-brand-deep hover:bg-brand-soft font-medium"
-              >
-                {l.label}
-              </a>
-            ))}
+            {nav.map((item) =>
+              item.type === "link" ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="py-3 px-3 rounded-xl text-brand-deep hover:bg-brand-soft font-medium"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <div key={item.label} className="py-1">
+                  <div className="px-3 pt-2 pb-1 text-xs uppercase tracking-wider text-ink/70 font-semibold">
+                    {item.label}
+                  </div>
+                  {item.children.map((c) => (
+                    <Link
+                      key={c.to}
+                      to={c.to}
+                      onClick={() => setOpen(false)}
+                      className="block py-3 px-3 rounded-xl text-brand-deep hover:bg-brand-soft font-medium"
+                    >
+                      {c.label}
+                    </Link>
+                  ))}
+                </div>
+              )
+            )}
             <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp mt-3 w-full">
               <MessageCircle className="h-4 w-4" /> Atención inmediata
             </a>

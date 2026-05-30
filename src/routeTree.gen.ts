@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MedicoADomicilioRouteImport } from './routes/medico-a-domicilio'
 import { Route as IndexRouteImport } from './routes/index'
 
+const MedicoADomicilioRoute = MedicoADomicilioRouteImport.update({
+  id: '/medico-a-domicilio',
+  path: '/medico-a-domicilio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/medico-a-domicilio': typeof MedicoADomicilioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/medico-a-domicilio': typeof MedicoADomicilioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/medico-a-domicilio': typeof MedicoADomicilioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/medico-a-domicilio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/medico-a-domicilio'
+  id: '__root__' | '/' | '/medico-a-domicilio'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MedicoADomicilioRoute: typeof MedicoADomicilioRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/medico-a-domicilio': {
+      id: '/medico-a-domicilio'
+      path: '/medico-a-domicilio'
+      fullPath: '/medico-a-domicilio'
+      preLoaderRoute: typeof MedicoADomicilioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +70,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MedicoADomicilioRoute: MedicoADomicilioRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
