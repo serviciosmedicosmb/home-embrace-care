@@ -41,7 +41,7 @@ export function Footer() {
         <div>
           <h4 className="text-white font-display font-bold text-sm tracking-wide uppercase">Contacto</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-[color:var(--brand)]" /> +56 9 6582 4407</li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-[color:var(--brand)]" /> +56 9 8275 2313</li>
             <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-[color:var(--brand)]" /> <a href={`mailto:${EMAIL}`} className="hover:text-white">{EMAIL}</a></li>
           </ul>
           <div className="mt-6 flex gap-3">
