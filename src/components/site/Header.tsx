@@ -13,7 +13,10 @@ const nav: NavItem[] = [
   {
     type: "dropdown",
     label: "Servicios",
-    children: [{ to: "/medico-a-domicilio", label: "Médico a Domicilio" }],
+    children: [
+      { to: "/medico-a-domicilio", label: "Médico a Domicilio" },
+      { to: "/enfermeria-a-domicilio", label: "Enfermería a Domicilio" },
+    ],
   },
   { type: "link", href: "/#nosotros", label: "Nosotros" },
   { type: "link", href: "/#contacto", label: "Contacto" },
