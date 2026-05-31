@@ -5,6 +5,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { waLink } from "@/lib/contact";
+import heroImg from "@/assets/enfermeria-domicilio-hero.jpg";
 import dobleCuritaIcon from "@/assets/icons/doble-curita.svg";
 import sueroIcon from "@/assets/icons/suero.svg";
 import solucionIcon from "@/assets/icons/solucion.svg";
