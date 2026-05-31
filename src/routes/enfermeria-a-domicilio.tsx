@@ -1,19 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { MessageCircle, Phone, ShieldCheck, HeartPulse, MapPin, Syringe, Bandage, Activity, UserCheck, Home, Plus, Minus, Pill, FlaskConical, Scissors, ShieldPlus, HandHeart, Send } from "lucide-react";
+import { MessageCircle, Phone, ShieldCheck, HeartPulse, MapPin, Bandage, Activity, Home, Plus, Minus, FlaskConical, Scissors, ShieldPlus, HandHeart } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { waLink } from "@/lib/contact";
 import heroImg from "@/assets/enfermeria-domicilio-hero.jpg";
 import dobleCuritaIcon from "@/assets/icons/doble-curita.svg";
-import sueroIcon from "@/assets/icons/suero.svg";
-import solucionIcon from "@/assets/icons/solucion.svg";
-import sondaFoleyIcon from "@/assets/icons/sonda-foley.svg";
-import informeMedicoIcon from "@/assets/icons/informe-medico.svg";
-import pacientePostradoIcon from "@/assets/icons/paciente-postrado.svg";
 import sillaRuedaIcon from "@/assets/icons/silla-de-rueda.svg";
-import fichaMedicaIcon from "@/assets/icons/ficha-medica.svg";
 
 export const Route = createFileRoute("/enfermeria-a-domicilio")({
   component: EnfermeriaDomicilioPage,
