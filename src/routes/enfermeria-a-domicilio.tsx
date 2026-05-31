@@ -447,7 +447,7 @@ function EnfermeriaDomicilioPage() {
                 />
               </div>
               <button type="submit" className="btn-whatsapp w-full justify-center">
-                <Send className="h-4 w-4" /> Enviar solicitud
+                <MessageCircle className="h-4 w-4" /> Enviar solicitud
               </button>
             </form>
           </div>
