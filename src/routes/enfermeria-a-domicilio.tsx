@@ -1,19 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { MessageCircle, Phone, ShieldCheck, HeartPulse, MapPin, Syringe, Bandage, Activity, UserCheck, Home, Plus, Minus, Pill, FlaskConical, Scissors, ShieldPlus, HandHeart, Send } from "lucide-react";
+import { MessageCircle, Phone, ShieldCheck, HeartPulse, MapPin, Bandage, Activity, Home, Plus, Minus, FlaskConical, Scissors, ShieldPlus, HandHeart } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { waLink } from "@/lib/contact";
 import heroImg from "@/assets/enfermeria-domicilio-hero.jpg";
 import dobleCuritaIcon from "@/assets/icons/doble-curita.svg";
-import sueroIcon from "@/assets/icons/suero.svg";
-import solucionIcon from "@/assets/icons/solucion.svg";
-import sondaFoleyIcon from "@/assets/icons/sonda-foley.svg";
-import informeMedicoIcon from "@/assets/icons/informe-medico.svg";
-import pacientePostradoIcon from "@/assets/icons/paciente-postrado.svg";
 import sillaRuedaIcon from "@/assets/icons/silla-de-rueda.svg";
-import fichaMedicaIcon from "@/assets/icons/ficha-medica.svg";
 
 export const Route = createFileRoute("/enfermeria-a-domicilio")({
   component: EnfermeriaDomicilioPage,
@@ -66,6 +60,107 @@ function ClockNumberIcon({ hours }: { hours: 12 | 24 }) {
   );
 }
 
+const svgProps = {
+  viewBox: "0 0 48 48",
+  className: "h-12 w-12",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true as const,
+};
+
+function IVBagIcon() {
+  return (
+    <svg {...svgProps}>
+      <path d="M20 6h8" />
+      <path d="M19 8h10l-1.5 18a3 3 0 0 1-3 3h-1v6" />
+      <path d="M19 8l1.5 18a3 3 0 0 0 3 3h.5" />
+      <path d="M24 33v8" />
+      <path d="M22 41h4" />
+      <path d="M22 14h4" />
+    </svg>
+  );
+}
+
+function SyringeArmIcon() {
+  return (
+    <svg {...svgProps}>
+      <path d="M28 6l4 4" />
+      <path d="M25 9l8 8" />
+      <path d="M30 14l-13 13" />
+      <path d="M17 27l-4 4 4 4 4-4" />
+      <path d="M22 22l4 4" />
+      <path d="M10 42c4-6 12-8 18-4" />
+    </svg>
+  );
+}
+
+function IVStandIcon() {
+  return (
+    <svg {...svgProps}>
+      <path d="M14 4v14" />
+      <path d="M10 18h8l-1.2 12a2.5 2.5 0 0 1-2.5 2.3h-.6a2.5 2.5 0 0 1-2.5-2.3z" />
+      <path d="M14 32.3V40" />
+      <path d="M14 40c0 2 6 2 10 2" />
+      <path d="M14 44h-4M14 44h4" />
+      <path d="M11 23h6" />
+    </svg>
+  );
+}
+
+function FoleyCatheterIcon() {
+  return (
+    <svg {...svgProps}>
+      <circle cx="14" cy="34" r="6" />
+      <path d="M14 28v-2" />
+      <path d="M14 26c0-4 4-6 8-6h4" />
+      <path d="M26 16h10v8H26z" />
+      <path d="M30 24v8" />
+      <path d="M27 32h6" />
+    </svg>
+  );
+}
+
+function MonitorVitalsIcon() {
+  return (
+    <svg {...svgProps}>
+      <rect x="5" y="8" width="38" height="26" rx="3" />
+      <path d="M10 22h6l3-7 4 14 3-7h12" />
+      <path d="M18 38h12" />
+      <path d="M24 34v4" />
+    </svg>
+  );
+}
+
+function PostOpBedIcon() {
+  return (
+    <svg {...svgProps}>
+      <circle cx="14" cy="14" r="4" />
+      <path d="M6 32v8" />
+      <path d="M6 32h36v6H6z" />
+      <path d="M42 38v4" />
+      <path d="M10 32V22a3 3 0 0 1 3-3h10l8 6h8a3 3 0 0 1 3 3v4" />
+      <path d="M34 10h6M37 7v6" />
+    </svg>
+  );
+}
+
+function ClinicalChartIcon() {
+  return (
+    <svg {...svgProps}>
+      <path d="M14 8h20a3 3 0 0 1 3 3v30a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z" />
+      <path d="M19 6h10a2 2 0 0 1 2 2v2H17V8a2 2 0 0 1 2-2z" />
+      <path d="M22 4h4" />
+      <path d="M17 22l3 3 6-6" />
+      <path d="M28 23h6" />
+      <path d="M17 32h6M28 32h6" />
+      <path d="M22 14h4M21 14v-2M27 14v-2" />
+    </svg>
+  );
+}
+
 type ServiceItem = { title: string; desc: string; icon: ReactNode };
 
 const services: ServiceItem[] = [
@@ -73,16 +168,16 @@ const services: ServiceItem[] = [
   { title: "TENS a domicilio 24 horas", desc: "Acompañamiento continuo con relevos profesionales.", icon: <ClockNumberIcon hours={24} /> },
   { title: "Curaciones simples", desc: "Limpieza y manejo de heridas no complejas en el hogar.", icon: <Bandage className="h-12 w-12" /> },
   { title: "Curaciones avanzadas", desc: "Heridas crónicas, úlceras por presión y manejo con apósitos especializados.", icon: <MaskIcon src={dobleCuritaIcon} alt="Curaciones avanzadas" /> },
-  { title: "Medicamentos vía intravenosa (IV)", desc: "Administración segura por enfermería certificada.", icon: <MaskIcon src={sueroIcon} alt="Medicamentos IV" /> },
-  { title: "Medicamentos vía intramuscular (IM)", desc: "Aplicación de inyectables prescritos por médico tratante.", icon: <Syringe className="h-12 w-12" /> },
-  { title: "Instalación de sueros y soluciones IV", desc: "Hidratación parenteral y terapias endovenosas en casa.", icon: <MaskIcon src={solucionIcon} alt="Sueros y soluciones IV" /> },
+  { title: "Medicamentos vía intravenosa (IV)", desc: "Administración segura por enfermería certificada.", icon: <IVBagIcon /> },
+  { title: "Medicamentos vía intramuscular (IM)", desc: "Aplicación de inyectables prescritos por médico tratante.", icon: <SyringeArmIcon /> },
+  { title: "Instalación de sueros y soluciones IV", desc: "Hidratación parenteral y terapias endovenosas en casa.", icon: <IVStandIcon /> },
   { title: "Retiro de puntos de sutura", desc: "Procedimiento clínico ambulatorio en tu hogar.", icon: <Scissors className="h-12 w-12" /> },
-  { title: "Instalación y manejo de sonda Foley", desc: "Instalación, recambio y cuidados de sondaje vesical.", icon: <MaskIcon src={sondaFoleyIcon} alt="Sonda Foley" /> },
+  { title: "Instalación y manejo de sonda Foley", desc: "Instalación, recambio y cuidados de sondaje vesical.", icon: <FoleyCatheterIcon /> },
   { title: "Aplicación de vacunas", desc: "Vacunación a domicilio con cadena de frío garantizada.", icon: <ShieldPlus className="h-12 w-12" /> },
   { title: "Control de signos vitales", desc: "Presión, saturación, glicemia, frecuencia y temperatura.", icon: <Activity className="h-12 w-12" /> },
   { title: "Toma de muestras", desc: "Coordinación con laboratorios para análisis clínicos.", icon: <FlaskConical className="h-12 w-12" /> },
-  { title: "Monitoreo clínico de pacientes", desc: "Evaluación continua e informe a la familia y médico tratante.", icon: <MaskIcon src={informeMedicoIcon} alt="Monitoreo clínico" /> },
-  { title: "Cuidados postoperatorios", desc: "Recuperación segura tras cirugías ambulatorias o mayores.", icon: <MaskIcon src={pacientePostradoIcon} alt="Cuidados postoperatorios" /> },
+  { title: "Monitoreo clínico de pacientes", desc: "Evaluación continua e informe a la familia y médico tratante.", icon: <MonitorVitalsIcon /> },
+  { title: "Cuidados postoperatorios", desc: "Recuperación segura tras cirugías ambulatorias o mayores.", icon: <PostOpBedIcon /> },
 ];
 
 type BenefitItem = { title: string; desc: string; icon: ReactNode };
@@ -92,7 +187,7 @@ const benefits: BenefitItem[] = [
   { title: "Profesionales capacitados", desc: "Enfermeras y TENS certificados con experiencia clínica.", icon: <ShieldCheck className="h-12 w-12" /> },
   { title: "Mayor comodidad", desc: "Menos estrés, mejor descanso y recuperación más rápida.", icon: <HeartPulse className="h-12 w-12" /> },
   { title: "Menor riesgo de traslados", desc: "Evitamos desplazamientos innecesarios y exposición a contagios.", icon: <MaskIcon src={sillaRuedaIcon} alt="Menor riesgo de traslados" /> },
-  { title: "Seguimiento continuo", desc: "Reportes clínicos y comunicación directa con la familia.", icon: <MaskIcon src={fichaMedicaIcon} alt="Seguimiento continuo" /> },
+  { title: "Seguimiento continuo", desc: "Reportes clínicos y comunicación directa con la familia.", icon: <ClinicalChartIcon /> },
 ];
 
 const communes = [
@@ -352,7 +447,7 @@ function EnfermeriaDomicilioPage() {
                 />
               </div>
               <button type="submit" className="btn-whatsapp w-full justify-center">
-                <Send className="h-4 w-4" /> Enviar solicitud
+                <MessageCircle className="h-4 w-4" /> Enviar solicitud
               </button>
             </form>
           </div>
