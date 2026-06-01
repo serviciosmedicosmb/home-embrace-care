@@ -151,39 +151,8 @@ function CuidadoraAdultoMayorPage() {
         {/* HERO */}
         <section className="relative pt-28 md:pt-32 pb-16 md:pb-24 hero-gradient overflow-hidden">
           <div className="absolute inset-0 radial-glow pointer-events-none" aria-hidden />
-          <div className="relative mx-auto max-w-7xl px-5 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="animate-fade-up">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-4 py-2 text-xs font-semibold text-brand-deep border border-[color:var(--brand-soft)] shadow-soft">
-                <span className="h-2 w-2 rounded-full bg-[color:var(--whatsapp)] animate-pulse" />
-                Cuidadoras certificadas · 24/7 en Región Metropolitana
-              </span>
-              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.05] text-brand-deep">
-                Cuidadoras de Adulto Mayor a Domicilio en <span className="text-brand">Santiago</span>
-              </h1>
-              <p className="mt-6 text-lg text-ink max-w-xl leading-relaxed">
-                Brindamos acompañamiento, asistencia y cuidados personalizados para adultos mayores autovalentes, con dependencia parcial o postrados, entregando tranquilidad y apoyo a las familias en la comodidad del hogar.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href={waLink("Hola, necesito información sobre cuidadoras de adulto mayor.")} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
-                  <MessageCircle className="h-5 w-5" /> Contactar por WhatsApp
-                </a>
-                <a href="#contacto" className="btn-outline">
-                  <Phone className="h-5 w-5" /> Solicitar Información
-                </a>
-              </div>
-
-              <ul className="mt-8 grid sm:grid-cols-2 gap-2.5">
-                {trustItems.map((t) => (
-                  <li key={t} className="flex items-start gap-2 text-sm text-brand-deep font-medium">
-                    <CheckCircle2 className="h-5 w-5 text-brand shrink-0 mt-0.5" />
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="relative animate-fade">
+          <div className="relative mx-auto max-w-5xl px-5 lg:px-8 animate-fade">
+            <div className="relative">
               <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[color:var(--brand)]/20 to-transparent blur-2xl" aria-hidden />
               <div className="relative rounded-[2rem] overflow-hidden shadow-card border border-white">
                 <img src={heroImg} alt="Cuidadora acompañando a adulto mayor en su hogar" className="w-full h-auto object-cover" />
@@ -209,6 +178,27 @@ function CuidadoraAdultoMayorPage() {
                 </article>
               ))}
             </div>
+
+            <article className="mt-10 rounded-3xl overflow-hidden border border-[color:var(--brand-soft)] bg-gradient-to-br from-brand-soft to-white shadow-soft">
+              <div className="grid md:grid-cols-[1.4fr_1fr] items-center gap-6 p-8 md:p-12">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-display font-semibold text-brand shadow-soft">
+                    <Sparkles className="h-3.5 w-3.5" /> Planes de atención
+                  </div>
+                  <h3 className="mt-4 text-2xl md:text-3xl font-display font-bold text-brand-deep leading-tight">
+                    Contamos con planes pensados para cada necesidad
+                  </h3>
+                  <p className="mt-3 text-ink max-w-xl">
+                    Conoce nuestros planes mensuales de atención integral: cuidadora, enfermería, médico y coordinación clínica adaptados a tu familia.
+                  </p>
+                </div>
+                <div className="md:justify-self-end">
+                  <a href="/#planes" className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 font-display font-semibold bg-brand-deep text-white hover:bg-[color:var(--brand)] hover:shadow-glow transition-all duration-300 hover:-translate-y-0.5">
+                    <Sparkles className="h-5 w-5" /> Ver nuestros planes
+                  </a>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -216,7 +206,6 @@ function CuidadoraAdultoMayorPage() {
         <section className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
-              <p className="text-sm font-semibold text-brand uppercase tracking-wider">¿Para quién?</p>
               <h2 className="mt-3 text-3xl md:text-4xl font-display font-bold">¿Para quién está dirigido?</h2>
               <p className="mt-4 text-ink">Acompañamos a adultos mayores y familias en distintas etapas y necesidades.</p>
             </div>
