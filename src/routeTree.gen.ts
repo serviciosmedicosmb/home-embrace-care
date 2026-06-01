@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MedicoADomicilioRouteImport } from './routes/medico-a-domicilio'
 import { Route as EnfermeriaADomicilioRouteImport } from './routes/enfermeria-a-domicilio'
+import { Route as CuidadoraAdultoMayorRouteImport } from './routes/cuidadora-adulto-mayor'
 import { Route as IndexRouteImport } from './routes/index'
 
 const MedicoADomicilioRoute = MedicoADomicilioRouteImport.update({
@@ -23,6 +24,11 @@ const EnfermeriaADomicilioRoute = EnfermeriaADomicilioRouteImport.update({
   path: '/enfermeria-a-domicilio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CuidadoraAdultoMayorRoute = CuidadoraAdultoMayorRouteImport.update({
+  id: '/cuidadora-adulto-mayor',
+  path: '/cuidadora-adulto-mayor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,47 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/enfermeria-a-domicilio' | '/medico-a-domicilio'
+  fullPaths:
+    | '/'
+    | '/cuidadora-adulto-mayor'
+    | '/enfermeria-a-domicilio'
+    | '/medico-a-domicilio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/enfermeria-a-domicilio' | '/medico-a-domicilio'
-  id: '__root__' | '/' | '/enfermeria-a-domicilio' | '/medico-a-domicilio'
+  to:
+    | '/'
+    | '/cuidadora-adulto-mayor'
+    | '/enfermeria-a-domicilio'
+    | '/medico-a-domicilio'
+  id:
+    | '__root__'
+    | '/'
+    | '/cuidadora-adulto-mayor'
+    | '/enfermeria-a-domicilio'
+    | '/medico-a-domicilio'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CuidadoraAdultoMayorRoute: typeof CuidadoraAdultoMayorRoute
   EnfermeriaADomicilioRoute: typeof EnfermeriaADomicilioRoute
   MedicoADomicilioRoute: typeof MedicoADomicilioRoute
 }
@@ -75,6 +98,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnfermeriaADomicilioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cuidadora-adulto-mayor': {
+      id: '/cuidadora-adulto-mayor'
+      path: '/cuidadora-adulto-mayor'
+      fullPath: '/cuidadora-adulto-mayor'
+      preLoaderRoute: typeof CuidadoraAdultoMayorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +117,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CuidadoraAdultoMayorRoute: CuidadoraAdultoMayorRoute,
   EnfermeriaADomicilioRoute: EnfermeriaADomicilioRoute,
   MedicoADomicilioRoute: MedicoADomicilioRoute,
 }

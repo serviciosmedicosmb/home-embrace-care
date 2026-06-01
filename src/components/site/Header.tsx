@@ -16,6 +16,7 @@ const nav: NavItem[] = [
     children: [
       { to: "/medico-a-domicilio", label: "Médico a Domicilio" },
       { to: "/enfermeria-a-domicilio", label: "Enfermería a Domicilio" },
+      { to: "/cuidadora-adulto-mayor", label: "Cuidadoras de Adulto Mayor" },
     ],
   },
   { type: "link", href: "/#nosotros", label: "Nosotros" },
