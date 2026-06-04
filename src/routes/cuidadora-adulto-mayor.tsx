@@ -3,6 +3,7 @@ import { useState, type ReactNode } from "react";
 import {
   MessageCircle,
   Phone,
+  ClipboardList,
   ShieldCheck,
   HeartPulse,
   MapPin,
