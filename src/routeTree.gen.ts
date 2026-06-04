@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as MedicoADomicilioRouteImport } from './routes/medico-a-domicilio'
 import { Route as EnfermeriaADomicilioRouteImport } from './routes/enfermeria-a-domicilio'
 import { Route as CuidadoraAdultoMayorRouteImport } from './routes/cuidadora-adulto-mayor'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const MedicoADomicilioRoute = MedicoADomicilioRouteImport.update({
   id: '/medico-a-domicilio',
@@ -29,54 +31,77 @@ const CuidadoraAdultoMayorRoute = CuidadoraAdultoMayorRouteImport.update({
   path: '/cuidadora-adulto-mayor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
     | '/medico-a-domicilio'
+    | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
     | '/medico-a-domicilio'
+    | '/blog/$slug'
   id:
     | '__root__'
     | '/'
+    | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
     | '/medico-a-domicilio'
+    | '/blog/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogRoute: typeof BlogRouteWithChildren
   CuidadoraAdultoMayorRoute: typeof CuidadoraAdultoMayorRoute
   EnfermeriaADomicilioRoute: typeof EnfermeriaADomicilioRoute
   MedicoADomicilioRoute: typeof MedicoADomicilioRoute
@@ -105,6 +130,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuidadoraAdultoMayorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -112,11 +144,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogRoute: BlogRouteWithChildren,
   CuidadoraAdultoMayorRoute: CuidadoraAdultoMayorRoute,
   EnfermeriaADomicilioRoute: EnfermeriaADomicilioRoute,
   MedicoADomicilioRoute: MedicoADomicilioRoute,
