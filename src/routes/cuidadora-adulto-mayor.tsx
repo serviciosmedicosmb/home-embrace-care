@@ -150,14 +150,30 @@ function CuidadoraAdultoMayorPage() {
       <Header />
       <main>
         {/* HERO */}
-        <section className="relative pt-28 md:pt-32 pb-16 md:pb-24 hero-gradient overflow-hidden">
+        <section className="relative pt-28 md:pt-32 pb-16 md:pb-24 overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src={heroImg}
+              alt="Cuidadora acompañando a adulto mayor en su hogar"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-brand-deep/60" />
+          </div>
           <div className="absolute inset-0 radial-glow pointer-events-none" aria-hidden />
-          <div className="relative mx-auto max-w-5xl px-5 lg:px-8 animate-fade">
-            <div className="relative">
-              <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[color:var(--brand)]/20 to-transparent blur-2xl" aria-hidden />
-              <div className="relative rounded-[2rem] overflow-hidden shadow-card border border-white">
-                <img src={heroImg} alt="Cuidadora acompañando a adulto mayor en su hogar" className="w-full h-auto object-cover" />
-              </div>
+          <div className="relative mx-auto max-w-5xl px-5 lg:px-8 text-center animate-fade-up">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.05] text-white">
+              Cuidadoras de Adulto Mayor a Domicilio en Santiago
+            </h1>
+            <p className="mt-6 text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+              Brindamos acompañamiento, asistencia y cuidados personalizados para adultos mayores autovalentes, con dependencia parcial o postrados, entregando tranquilidad y apoyo a las familias en la comodidad del hogar.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a href="#contacto" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-display font-semibold text-brand-deep transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card">
+                <ClipboardList className="h-5 w-5" /> Solicitar Información
+              </a>
+              <a href={waLink("Hola, necesito información sobre cuidadoras de adulto mayor a domicilio.")} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
+                <MessageCircle className="h-5 w-5" /> Contactar por WhatsApp
+              </a>
             </div>
           </div>
         </section>
