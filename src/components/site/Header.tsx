@@ -19,6 +19,7 @@ const nav: NavItem[] = [
       { to: "/cuidadora-adulto-mayor", label: "Cuidadoras de Adulto Mayor" },
     ],
   },
+  { type: "link", href: "/blog", label: "Blog" },
   { type: "link", href: "/#nosotros", label: "Nosotros" },
   { type: "link", href: "/#contacto", label: "Contacto" },
 ];
