@@ -20,6 +20,7 @@ const nav: NavItem[] = [
     ],
   },
   { type: "link", href: "/blog", label: "Blog" },
+  { type: "link", href: "/testimonios", label: "Testimonios" },
   { type: "link", href: "/#nosotros", label: "Nosotros" },
   { type: "link", href: "/#contacto", label: "Contacto" },
 ];
