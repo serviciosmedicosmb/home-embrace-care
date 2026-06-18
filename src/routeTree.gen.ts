@@ -9,13 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TestimoniosRouteImport } from './routes/testimonios'
 import { Route as MedicoADomicilioRouteImport } from './routes/medico-a-domicilio'
 import { Route as EnfermeriaADomicilioRouteImport } from './routes/enfermeria-a-domicilio'
 import { Route as CuidadoraAdultoMayorRouteImport } from './routes/cuidadora-adulto-mayor'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AuthenticatedAdminTestimoniosRouteImport } from './routes/_authenticated/admin.testimonios'
 
+const TestimoniosRoute = TestimoniosRouteImport.update({
+  id: '/testimonios',
+  path: '/testimonios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MedicoADomicilioRoute = MedicoADomicilioRouteImport.update({
   id: '/medico-a-domicilio',
   path: '/medico-a-domicilio',
@@ -36,6 +45,15 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -46,69 +64,105 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => BlogRoute,
 } as any)
+const AuthenticatedAdminTestimoniosRoute =
+  AuthenticatedAdminTestimoniosRouteImport.update({
+    id: '/admin/testimonios',
+    path: '/admin/testimonios',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
+  '/testimonios': typeof TestimoniosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/admin/testimonios': typeof AuthenticatedAdminTestimoniosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
+  '/testimonios': typeof TestimoniosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/admin/testimonios': typeof AuthenticatedAdminTestimoniosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
+  '/testimonios': typeof TestimoniosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/_authenticated/admin/testimonios': typeof AuthenticatedAdminTestimoniosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
     | '/medico-a-domicilio'
+    | '/testimonios'
     | '/blog/$slug'
+    | '/admin/testimonios'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
     | '/medico-a-domicilio'
+    | '/testimonios'
     | '/blog/$slug'
+    | '/admin/testimonios'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
+    | '/auth'
     | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
     | '/medico-a-domicilio'
+    | '/testimonios'
     | '/blog/$slug'
+    | '/_authenticated/admin/testimonios'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRouteWithChildren
   CuidadoraAdultoMayorRoute: typeof CuidadoraAdultoMayorRoute
   EnfermeriaADomicilioRoute: typeof EnfermeriaADomicilioRoute
   MedicoADomicilioRoute: typeof MedicoADomicilioRoute
+  TestimoniosRoute: typeof TestimoniosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonios': {
+      id: '/testimonios'
+      path: '/testimonios'
+      fullPath: '/testimonios'
+      preLoaderRoute: typeof TestimoniosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/medico-a-domicilio': {
       id: '/medico-a-domicilio'
       path: '/medico-a-domicilio'
@@ -137,6 +191,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -151,8 +219,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof BlogRoute
     }
+    '/_authenticated/admin/testimonios': {
+      id: '/_authenticated/admin/testimonios'
+      path: '/admin/testimonios'
+      fullPath: '/admin/testimonios'
+      preLoaderRoute: typeof AuthenticatedAdminTestimoniosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminTestimoniosRoute: typeof AuthenticatedAdminTestimoniosRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminTestimoniosRoute: AuthenticatedAdminTestimoniosRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface BlogRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
@@ -166,10 +252,13 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   BlogRoute: BlogRouteWithChildren,
   CuidadoraAdultoMayorRoute: CuidadoraAdultoMayorRoute,
   EnfermeriaADomicilioRoute: EnfermeriaADomicilioRoute,
   MedicoADomicilioRoute: MedicoADomicilioRoute,
+  TestimoniosRoute: TestimoniosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
