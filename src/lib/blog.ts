@@ -243,7 +243,14 @@ export const POSTS: BlogPost[] = [
   },
 ];
 
-export const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("es-CL", { year: "numeric", month: "long", day: "numeric" });
+const MONTHS_ES = [
+  "enero","febrero","marzo","abril","mayo","junio",
+  "julio","agosto","septiembre","octubre","noviembre","diciembre",
+];
+export const formatDate = (iso: string) => {
+  // Parse as date-only to avoid timezone shifts between SSR (UTC) and client (local).
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} de ${MONTHS_ES[m - 1]} de ${y}`;
+};
 
 export const getPostBySlug = (slug: string) => POSTS.find((p) => p.slug === slug);
