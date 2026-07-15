@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TestimoniosRouteImport } from './routes/testimonios'
 import { Route as MedicoADomicilioRouteImport } from './routes/medico-a-domicilio'
+import { Route as GuiaProteccionRouteImport } from './routes/guia-proteccion'
 import { Route as EnfermeriaADomicilioRouteImport } from './routes/enfermeria-a-domicilio'
 import { Route as CuidadoraAdultoMayorRouteImport } from './routes/cuidadora-adulto-mayor'
 import { Route as BlogRouteImport } from './routes/blog'
@@ -28,6 +29,11 @@ const TestimoniosRoute = TestimoniosRouteImport.update({
 const MedicoADomicilioRoute = MedicoADomicilioRouteImport.update({
   id: '/medico-a-domicilio',
   path: '/medico-a-domicilio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaProteccionRoute = GuiaProteccionRouteImport.update({
+  id: '/guia-proteccion',
+  path: '/guia-proteccion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnfermeriaADomicilioRoute = EnfermeriaADomicilioRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
+  '/guia-proteccion': typeof GuiaProteccionRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
   '/testimonios': typeof TestimoniosRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
+  '/guia-proteccion': typeof GuiaProteccionRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
   '/testimonios': typeof TestimoniosRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/blog': typeof BlogRouteWithChildren
   '/cuidadora-adulto-mayor': typeof CuidadoraAdultoMayorRoute
   '/enfermeria-a-domicilio': typeof EnfermeriaADomicilioRoute
+  '/guia-proteccion': typeof GuiaProteccionRoute
   '/medico-a-domicilio': typeof MedicoADomicilioRoute
   '/testimonios': typeof TestimoniosRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
+    | '/guia-proteccion'
     | '/medico-a-domicilio'
     | '/testimonios'
     | '/blog/$slug'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
+    | '/guia-proteccion'
     | '/medico-a-domicilio'
     | '/testimonios'
     | '/blog/$slug'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/cuidadora-adulto-mayor'
     | '/enfermeria-a-domicilio'
+    | '/guia-proteccion'
     | '/medico-a-domicilio'
     | '/testimonios'
     | '/blog/$slug'
@@ -150,6 +162,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRouteWithChildren
   CuidadoraAdultoMayorRoute: typeof CuidadoraAdultoMayorRoute
   EnfermeriaADomicilioRoute: typeof EnfermeriaADomicilioRoute
+  GuiaProteccionRoute: typeof GuiaProteccionRoute
   MedicoADomicilioRoute: typeof MedicoADomicilioRoute
   TestimoniosRoute: typeof TestimoniosRoute
 }
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/medico-a-domicilio'
       fullPath: '/medico-a-domicilio'
       preLoaderRoute: typeof MedicoADomicilioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia-proteccion': {
+      id: '/guia-proteccion'
+      path: '/guia-proteccion'
+      fullPath: '/guia-proteccion'
+      preLoaderRoute: typeof GuiaProteccionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enfermeria-a-domicilio': {
@@ -257,6 +277,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRouteWithChildren,
   CuidadoraAdultoMayorRoute: CuidadoraAdultoMayorRoute,
   EnfermeriaADomicilioRoute: EnfermeriaADomicilioRoute,
+  GuiaProteccionRoute: GuiaProteccionRoute,
   MedicoADomicilioRoute: MedicoADomicilioRoute,
   TestimoniosRoute: TestimoniosRoute,
 }
