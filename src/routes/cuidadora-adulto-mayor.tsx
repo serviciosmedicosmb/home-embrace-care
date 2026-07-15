@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import {
   MessageCircle,
   Phone,
@@ -131,6 +131,24 @@ const faqs = [
 function CuidadoraAdultoMayorPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [form, setForm] = useState({ nombre: "", telefono: "", servicio: "", mensaje: "" });
+  const [guideVisible, setGuideVisible] = useState(false);
+  const guideRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = guideRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setGuideVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -312,6 +330,60 @@ function CuidadoraAdultoMayorPage() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* FREE RESOURCE GUIDE */}
+        <section className="py-16 md:py-24 bg-surface">
+          <div className="mx-auto max-w-4xl px-5 lg:px-8">
+            <div
+              ref={guideRef}
+              className={`bg-white rounded-3xl border-t-4 border-[#00C4A8] shadow-soft p-8 md:p-12 text-center ${guideVisible ? "animate-fade-up-400" : "opacity-0"}`}
+            >
+              <div className="mx-auto h-16 w-16 rounded-2xl bg-[#00C4A8]/10 grid place-items-center mb-6">
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-8 w-8 text-[#00C4A8]"
+                  aria-hidden="true"
+                >
+                  <path d="M24 4L6 12v12c0 12 9 20 18 22 9-2 18-10 18-22V12L24 4z" />
+                  <path d="M24 18c-2.5-2.5-6.5-2.5-9 0s-2.5 6.5 0 9l9 9 9-9c2.5-2.5 2.5-6.5 0-9s-6.5-2.5-9 0z" />
+                </svg>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-brand-deep">
+                🎁 Recurso gratuito para las familias
+              </h2>
+              <p className="mt-4 text-ink max-w-2xl mx-auto leading-relaxed">
+                Cuidar a un adulto mayor también significa ayudarlo a mantenerse seguro.{" "}
+                <br className="hidden md:block" />
+                Por eso creamos una guía gratuita con recomendaciones prácticas para reconocer las estafas más frecuentes, prevenir situaciones de riesgo y proteger a quienes más queremos.
+              </p>
+              <a
+                href="/guia-proteccion"
+                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#00C4A8] hover:bg-[#00b298] transition-colors px-8 py-4 font-display font-semibold text-white text-base shadow-[0_10px_30px_-10px_rgba(0,196,168,0.6)]"
+              >
+                📘 Ver guía gratuita
+              </a>
+              <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-sm text-brand-deep font-medium">
+                <div className="flex items-center justify-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-[#00C4A8]" />
+                  <span>Acceso gratuito</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-[#00C4A8]" />
+                  <span>Basada en situaciones reales</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-[#00C4A8]" />
+                  <span>Elaborada por Servicios Médicos MB</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
