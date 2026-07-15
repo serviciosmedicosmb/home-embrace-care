@@ -360,7 +360,7 @@ function CuidadoraAdultoMayorPage() {
                 🎁 Recurso gratuito para las familias
               </h2>
               <p className="mt-4 text-ink max-w-2xl mx-auto leading-relaxed">
-                Cuidar a un adulto mayor también significa ayudarlo a mantenerse seguro.
+                Cuidar a un adulto mayor también significa ayudarlo a mantenerse seguro.{" "}
                 <br className="hidden md:block" />
                 Por eso creamos una guía gratuita con recomendaciones prácticas para reconocer las estafas más frecuentes, prevenir situaciones de riesgo y proteger a quienes más queremos.
               </p>
