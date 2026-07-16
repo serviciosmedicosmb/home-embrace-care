@@ -39,7 +39,7 @@ function AdminTestimoniosPage() {
     queryKey: ["admin-testimonials", filter],
     enabled: isAdmin === true,
     queryFn: async (): Promise<Testimonial[]> => {
-      let q = supabase.from("testimonials").select("*").order("created_at", { ascending: false });
+      let q = supabase.from("testimonials").select("id,name,relation,service,rating,comment,status,featured,created_at,updated_at").order("created_at", { ascending: false });
       if (filter !== "all") q = q.eq("status", filter);
       const { data, error } = await q;
       if (error) throw error;
