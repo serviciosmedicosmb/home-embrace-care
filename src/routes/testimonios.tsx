@@ -54,14 +54,18 @@ function TestimoniosPage() {
   const { data: testimonials = [], isLoading, refetch } = useQuery({
     queryKey: ["testimonials", "approved"],
     queryFn: async (): Promise<Testimonial[]> => {
-      const { data, error } = await supabase
-        .from("testimonials")
-        .select("*")
-        .eq("status", "approved")
+      const { data, error } = await (supabase as any)
+        .from("approved_testimonials")
+        .select("id,name,relation,service,rating,comment,featured,created_at")
         .order("featured", { ascending: false })
         .order("created_at", { ascending: false });
       if (error) throw error;
-      return (data ?? []) as Testimonial[];
+      return ((data ?? []) as any[]).map((r) => ({
+        ...r,
+        email: null,
+        status: "approved" as const,
+        updated_at: r.created_at,
+      })) as Testimonial[];
     },
   });
 

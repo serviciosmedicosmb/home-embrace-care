@@ -39,11 +39,11 @@ function AdminTestimoniosPage() {
     queryKey: ["admin-testimonials", filter],
     enabled: isAdmin === true,
     queryFn: async (): Promise<Testimonial[]> => {
-      let q = supabase.from("testimonials").select("*").order("created_at", { ascending: false });
+      let q = supabase.from("testimonials").select("id,name,relation,service,rating,comment,status,featured,created_at,updated_at").order("created_at", { ascending: false });
       if (filter !== "all") q = q.eq("status", filter);
       const { data, error } = await q;
       if (error) throw error;
-      return (data ?? []) as Testimonial[];
+      return ((data ?? []) as any[]).map((r) => ({ ...r, email: null })) as Testimonial[];
     },
   });
 
@@ -200,10 +200,8 @@ function AdminRow({ t }: { t: Testimonial }) {
           ) : (
             <>
               <p className="mt-3 font-semibold text-brand-deep">{t.name}</p>
-              {(t.service || t.email) && (
-                <p className="text-xs text-ink/60">
-                  {t.service}{t.service && t.email ? " · " : ""}{t.email}
-                </p>
+              {t.service && (
+                <p className="text-xs text-ink/60">{t.service}</p>
               )}
               <p className="mt-2 text-sm text-ink/85">"{t.comment}"</p>
             </>

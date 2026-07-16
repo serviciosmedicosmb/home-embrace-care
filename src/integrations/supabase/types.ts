@@ -79,7 +79,39 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      approved_testimonials: {
+        Row: {
+          comment: string | null
+          created_at: string | null
+          featured: boolean | null
+          id: string | null
+          name: string | null
+          rating: number | null
+          relation: string | null
+          service: string | null
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string | null
+          featured?: boolean | null
+          id?: string | null
+          name?: string | null
+          rating?: number | null
+          relation?: string | null
+          service?: string | null
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string | null
+          featured?: boolean | null
+          id?: string | null
+          name?: string | null
+          rating?: number | null
+          relation?: string | null
+          service?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
