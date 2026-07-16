@@ -200,10 +200,8 @@ function AdminRow({ t }: { t: Testimonial }) {
           ) : (
             <>
               <p className="mt-3 font-semibold text-brand-deep">{t.name}</p>
-              {(t.service || t.email) && (
-                <p className="text-xs text-ink/60">
-                  {t.service}{t.service && t.email ? " · " : ""}{t.email}
-                </p>
+              {t.service && (
+                <p className="text-xs text-ink/60">{t.service}</p>
               )}
               <p className="mt-2 text-sm text-ink/85">"{t.comment}"</p>
             </>
