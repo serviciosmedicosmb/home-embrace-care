@@ -316,6 +316,31 @@ function CuidadoraAdultoMayorPage() {
           </div>
         </section>
 
+        {/* RECURSO GRATUITO */}
+        <section className="py-16 md:py-20 bg-white">
+          <div className="mx-auto max-w-4xl px-5 lg:px-8">
+            <div className="rounded-3xl border border-[#E6ECF7] bg-white p-8 md:p-12 shadow-[0_20px_60px_-30px_rgba(30,78,140,0.35)] text-center">
+              <div className="mx-auto h-16 w-16 rounded-2xl bg-[#00C4A8]/10 grid place-items-center">
+                <ShieldCheck className="h-8 w-8 text-[#00C4A8]" />
+              </div>
+              <h2 className="mt-6 font-display font-bold text-2xl md:text-3xl text-[#1E4E8C]">
+                Recurso gratuito para las familias
+              </h2>
+              <p className="mt-4 text-[#5F6F7F] text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                Descarga nuestra guía práctica para reconocer estafas, prevenir situaciones de riesgo y proteger a los adultos mayores de la familia.
+              </p>
+              <div className="mt-8">
+                <Link
+                  to="/guia-proteccion"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1E4E8C] hover:bg-[#173e70] transition-colors px-8 py-4 font-display font-semibold text-white shadow-[0_10px_30px_-10px_rgba(30,78,140,0.6)]"
+                >
+                  Ver recurso gratuito
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FINAL CTA + FORM */}
         <section id="contacto" className="py-20 md:py-28 bg-brand-deep relative overflow-hidden">
           <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[color:var(--brand)]/30 blur-3xl" aria-hidden />

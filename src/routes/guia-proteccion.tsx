@@ -12,9 +12,9 @@ export const Route = createFileRoute("/guia-proteccion")({
   component: GuiaProteccion,
   head: () => ({
     meta: [
-      { title: "Guía para proteger a adultos mayores de estafas | Servicios Médicos MB" },
+      { title: "Recurso gratuito para las familias | Servicios Médicos MB" },
       { name: "description", content: "Descarga gratuitamente una guía práctica para reconocer y prevenir estafas dirigidas a adultos mayores." },
-      { property: "og:title", content: "Guía para proteger a adultos mayores de estafas | Servicios Médicos MB" },
+      { property: "og:title", content: "Recurso gratuito para las familias | Servicios Médicos MB" },
       { property: "og:description", content: "Descarga gratuitamente una guía práctica para reconocer y prevenir estafas dirigidas a adultos mayores." },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://home-embrace-care.lovable.app/guia-proteccion" },
@@ -50,10 +50,10 @@ function GuiaProteccion() {
               <ShieldCheck className="h-8 w-8 text-[#00C4A8]" />
             </div>
             <h1 className="font-display font-bold text-4xl md:text-5xl text-white leading-tight">
-              Tu guía ya está lista
+              Recurso gratuito para las familias
             </h1>
             <p className="mt-5 text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-              Aprende a reconocer las estafas más frecuentes y protege a quienes más quieres antes de que sea demasiado tarde.
+              Una guía creada para ayudar a reconocer estafas, prevenir situaciones de riesgo y proteger a los adultos mayores que más queremos.
             </p>
             <p className="mt-4 text-sm md:text-base text-white/70 max-w-2xl mx-auto">
               Esta guía fue creada para ayudar a las familias a identificar señales de alerta, actuar con mayor seguridad y conversar con los adultos mayores sobre situaciones de riesgo.
