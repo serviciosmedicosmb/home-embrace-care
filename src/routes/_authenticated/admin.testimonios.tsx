@@ -43,7 +43,7 @@ function AdminTestimoniosPage() {
       if (filter !== "all") q = q.eq("status", filter);
       const { data, error } = await q;
       if (error) throw error;
-      return (data ?? []) as Testimonial[];
+      return ((data ?? []) as any[]).map((r) => ({ ...r, email: null })) as Testimonial[];
     },
   });
 
