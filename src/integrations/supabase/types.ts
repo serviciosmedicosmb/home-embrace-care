@@ -114,28 +114,6 @@ export type Database = {
       }
     }
     Functions: {
-      admin_list_testimonials: {
-        Args: { _status?: string }
-        Returns: {
-          comment: string
-          created_at: string
-          email: string | null
-          featured: boolean
-          id: string
-          name: string
-          rating: number
-          relation: string | null
-          service: string | null
-          status: string
-          updated_at: string
-        }[]
-        SetofOptions: {
-          from: "*"
-          to: "testimonials"
-          isOneToOne: false
-          isSetofReturn: true
-        }
-      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
