@@ -29,6 +29,7 @@ function Index() {
       <Header />
       <main>
         <Hero />
+        <Telemedicine />
         <Trust />
         <Services />
         <Plans />
