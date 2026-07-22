@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
-import teleAsset from "@/assets/telemedicina.png.asset.json";
+import telemedicinaImage from "@/assets/telemedicina.jpg";
 
 const TELE_MSG =
   "Hola, quisiera agendar una consulta médica por telemedicina. ¿Podrían indicarme los horarios disponibles?";
