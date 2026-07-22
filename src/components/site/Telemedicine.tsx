@@ -40,7 +40,7 @@ export function Telemedicine() {
         >
           <div className="grid lg:grid-cols-2 gap-0 items-stretch">
             {/* Imagen */}
-            <div className="relative min-h-[280px] lg:min-h-[440px]">
+            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">
               <span
                 aria-hidden
                 className="absolute -top-10 -left-10 h-64 w-64 rounded-full bg-[#00C4A8]/20 blur-2xl telemed-pulse"
@@ -50,14 +50,17 @@ export function Telemedicine() {
                 className="absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#7CC6FE]/25 blur-2xl"
               />
               <img
-                src={telemedicinaImage}
-                alt="Médico atendiendo consulta online por videollamada"
-                loading="lazy"
-                onError={(e) => {
-                  console.error("Telemedicine image failed to load");
-                  e.currentTarget.style.display = "none";
+                src={consultaMedicaOnlineImage}
+                alt="Médico realizando una consulta médica online"
+                className="block w-full h-full object-cover object-center relative z-10"
+                loading="eager"
+                decoding="async"
+                width="900"
+                height="675"
+                onError={(event) => {
+                  event.currentTarget.style.visibility = "hidden";
+                  console.error("No se pudo cargar consulta-medica-online-v2.webp");
                 }}
-                className="relative z-10 w-full h-full object-cover object-center"
               />
             </div>
 
