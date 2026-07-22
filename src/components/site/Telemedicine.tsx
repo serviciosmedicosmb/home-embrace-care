@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
-import teleAsset from "@/assets/telemedicina.png.asset.json";
+import telemedicinaImage from "@/assets/telemedicina.jpg";
 
 const TELE_MSG =
   "Hola, quisiera agendar una consulta médica por telemedicina. ¿Podrían indicarme los horarios disponibles?";
@@ -50,10 +50,14 @@ export function Telemedicine() {
                 className="absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#7CC6FE]/25 blur-2xl"
               />
               <img
-                src={teleAsset.url}
+                src={telemedicinaImage}
                 alt="Médico atendiendo consulta online por videollamada"
                 loading="lazy"
-                className="relative z-10 h-full w-full object-cover object-[center_25%]"
+                onError={(e) => {
+                  console.error("Telemedicine image failed to load");
+                  e.currentTarget.style.display = "none";
+                }}
+                className="relative z-10 w-full h-full object-cover object-center"
               />
             </div>
 
