@@ -10,9 +10,9 @@ import { waLink } from "@/lib/contact";
 const services = [
   { Icon: Stethoscope, title: "Médico a domicilio", desc: "Consulta médica integral en tu hogar con profesionales colegiados.", img: doctorImg, price: "$79.990 / consulta" },
   { Icon: Syringe, title: "Enfermería domiciliaria", desc: "Curaciones, inyecciones, sueros y procedimientos clínicos seguros.", img: nurseImg, price: "$49.990 / consulta" },
-  { Icon: Users, title: "Cuidados adulto mayor", desc: "Acompañamiento, higiene, alimentación y compañía profesional.", img: elderlyImg, price: "$59.990-109.990 / día" },
-  { Icon: Bed, title: "Pacientes postrados", desc: "Cuidado especializado, prevención de escaras y movilización.", img: bedriddenImg, price: "$119.990 / día" },
-  { Icon: Bandage, title: "Cuidados postoperatorios", desc: "Recuperación segura en casa con seguimiento clínico continuo.", img: postopImg, price: "$79.990-149.990 / día" },
+  { Icon: Users, title: "Cuidados adulto mayor", desc: "Acompañamiento, higiene, alimentación y compañía profesional.", img: elderlyImg, price: "$49.990-100.990 / día" },
+  { Icon: Bed, title: "Pacientes postrados", desc: "Cuidado especializado, prevención de escaras y movilización.", img: bedriddenImg, price: "$109.990 / día" },
+  { Icon: Bandage, title: "Cuidados postoperatorios", desc: "Recuperación segura en casa con seguimiento clínico continuo.", img: postopImg, price: "$49.990/ día" },
   { Icon: Activity, title: "Control clínico", desc: "Monitoreo de signos vitales, medicamentos y reportes familiares.", img: controlImg, price: "Cotización a medida" },
 ];
 
