@@ -32,7 +32,7 @@ const plans = [
   },
   {
     name: "Plan Premium",
-    price: 4199990,
+    price: 3610.990,
     desc: "Atención clínica completa y personalizada.",
     features: [
       "Atención integral 24/7",
