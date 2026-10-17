@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, CheckCircle2, AlertCircle } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 import consultaMedicaOnlineImage from "@/assets/consulta-medica-online-v2.webp";
 
@@ -72,11 +72,11 @@ export function Telemedicine() {
               </span>
 
               <h2 className="mt-5 font-display text-3xl md:text-4xl leading-tight text-brand-deep">
-                Consulta médica Online
+                Consulta médica online
               </h2>
 
               <p className="mt-4 text-ink leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Recibe orientación médica profesional desde la comodidad y seguridad de tu hogar.
+                Orientación médica profesional por videollamada, sin salir de casa. Ideal para dudas de salud, seguimiento de tratamientos o evaluación inicial de un familiar adulto mayor.
               </p>
 
               <div className="mt-6 flex items-baseline justify-center lg:justify-start gap-3">
@@ -86,8 +86,21 @@ export function Telemedicine() {
                 <span className="text-sm text-ink">por consulta</span>
               </div>
 
-              <p className="mt-2 text-sm text-ink">
-                Atención cercana, rápida y personalizada.
+              <ul className="mt-6 space-y-3 text-sm text-ink text-left max-w-lg mx-auto lg:mx-0">
+                {[
+                  "Atención por videollamada con médico habilitado para ejercer en Chile",
+                  "Orientación, revisión de síntomas y recomendaciones",
+                  "Agenda simple por WhatsApp",
+                ].map((benefit) => (
+                  <li key={benefit} className="flex items-start gap-2.5">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-[#00C4A8]" aria-hidden="true" />
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 flex items-start gap-2 text-sm text-ink text-left max-w-lg mx-auto lg:mx-0">
+                <AlertCircle className="h-5 w-5 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
+                <span>No reemplaza una urgencia ni una atención presencial.</span>
               </p>
 
               <div className="mt-7 flex flex-col items-center lg:items-start gap-3">
@@ -95,13 +108,13 @@ export function Telemedicine() {
                   href={teleWaLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Agendar telemedicina por WhatsApp"
+                  aria-label="Agendar consulta médica online por WhatsApp"
                   className="telemed-cta inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#00C4A8] hover:bg-[#00A88F] text-white px-8 py-4 font-display font-semibold tracking-wide shadow-[0_14px_30px_-12px_rgba(0,196,168,0.55)] transition-all duration-300 hover:-translate-y-0.5 motion-reduce:transform-none motion-reduce:transition-colors"
                 >
                   <MessageCircle className="h-5 w-5" aria-hidden />
-                  AGENDAR TELEMEDICINA
+                  Agendar consulta online
                 </a>
-                <span className="text-xs text-ink">Agenda sencilla por WhatsApp.</span>
+                <span className="text-xs text-ink">Coordinación de horarios por WhatsApp.</span>
               </div>
             </div>
           </div>
