@@ -2,6 +2,29 @@ import { MessageCircle } from "lucide-react";
 import emotionalImg from "@/assets/emotional.jpg";
 import { waLink } from "@/lib/contact";
 
+const commitments = [
+  {
+    title: "Empatía en cada visita",
+    description: "Atención respetuosa, paciente y centrada en la persona.",
+  },
+  {
+    title: "Acompañamiento real",
+    description: "No solo asistencia física; también compañía, rutinas y bienestar emocional.",
+  },
+  {
+    title: "Comunicación constante",
+    description: "La familia recibe información sobre la evolución y el cumplimiento del plan.",
+  },
+  {
+    title: "Profesionales seleccionados",
+    description: "Cuidadoras, enfermeras y médicos evaluados antes de su asignación.",
+  },
+  {
+    title: "Protocolos claros",
+    description: "Definimos desde el inicio medicación, contactos de emergencia, alergias y preferencias del paciente.",
+  },
+];
+
 export function Emotional() {
   return (
     <section id="nosotros" className="py-20 md:py-28 bg-brand-soft">
@@ -25,14 +48,21 @@ export function Emotional() {
             La tranquilidad de saber que tu familiar está en <span className="text-brand">buenas manos</span>.
           </h2>
           <p className="mt-6 text-lg text-ink leading-relaxed">
-            Acompañamos a familias con empatía, profesionalismo y dedicación. Cada visita es una promesa de
-            cuidado, respeto y confianza para quienes más queremos.
+            Acompañamos a las familias con empatía, profesionalismo y comunicación constante. Nuestro objetivo
+            es que tu familiar reciba un cuidado digno, seguro y personalizado, mientras tú tienes claridad
+            sobre qué está ocurriendo en cada etapa.
           </p>
 
-          <ul className="mt-8 space-y-3">
-            {["Empatía en cada visita", "Acompañamiento real, no solo asistencia", "Comunicación constante con la familia", "Profesionales seleccionados y supervisados"].map((t) => (
-              <li key={t} className="flex items-center gap-3 text-brand-deep">
-                <span className="h-2 w-2 rounded-full bg-[color:var(--brand)]" /> {t}
+          <ul className="mt-8 space-y-4">
+            {commitments.map(({ title, description }) => (
+              <li key={title} className="flex items-start gap-3 text-brand-deep">
+                <span
+                  className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[color:var(--brand)]"
+                  aria-hidden="true"
+                />
+                <span className="text-sm md:text-base leading-relaxed">
+                  <strong className="font-semibold">{title}:</strong> {description}
+                </span>
               </li>
             ))}
           </ul>
