@@ -1,5 +1,7 @@
 import { MessageCircle, Mail, Phone, MapPin, Instagram, Facebook } from "lucide-react";
-import { waLink, EMAIL } from "@/lib/contact";
+import { waLink } from "@/lib/contact";
+
+const CONTACT_EMAIL = "serviciosmedicosmb@gmail.com";
 
 export function Footer() {
   return (
@@ -11,7 +13,7 @@ export function Footer() {
             <span className="font-display font-bold text-white">Servicios Médicos MB</span>
           </div>
           <p className="mt-5 text-sm leading-relaxed">
-            Atención médica y cuidado integral a domicilio con estándares de clínica privada premium.
+            Atención médica, enfermería y cuidado de adultos mayores a domicilio en Santiago. Acompañamos a las familias con profesionales seleccionados, coordinación clínica y comunicación constante.
           </p>
           <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp mt-6 !py-3 !px-5 text-sm">
             <MessageCircle className="h-4 w-4" /> Escríbenos por WhatsApp
@@ -33,20 +35,20 @@ export function Footer() {
           <h4 className="text-white font-display font-bold text-sm tracking-wide uppercase">Cobertura</h4>
           <ul className="mt-5 space-y-3 text-sm">
             <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-[color:var(--brand)]" /> Región Metropolitana, Santiago</li>
-            <li>Atención disponible 24/7</li>
-            <li>Respuesta en menos de 24 horas</li>
+            <li>Atención y coordinación: 24/7</li>
+            <li>Inicio de servicio: en menos de 24 horas, según disponibilidad</li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-white font-display font-bold text-sm tracking-wide uppercase">Contacto</h4>
           <ul className="mt-5 space-y-3 text-sm">
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-[color:var(--brand)]" /> +56 9 8275 2313</li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-[color:var(--brand)]" /> <a href={`mailto:${EMAIL}`} className="hover:text-white">{EMAIL}</a></li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0 text-[color:var(--brand)]" /> <a href="tel:+56982752313" className="hover:text-white transition">+56 9 8275 2313</a></li>
+            <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-[color:var(--brand)]" /> <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">{CONTACT_EMAIL}</a></li>
           </ul>
           <div className="mt-6 flex gap-3">
-            <a href="#" aria-label="Instagram" className="h-10 w-10 grid place-items-center rounded-full bg-white/5 hover:bg-white/10 transition"><Instagram className="h-4 w-4" /></a>
-            <a href="#" aria-label="Facebook" className="h-10 w-10 grid place-items-center rounded-full bg-white/5 hover:bg-white/10 transition"><Facebook className="h-4 w-4" /></a>
+            <a href="https://www.instagram.com/serviciosmedicosmb/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Servicios Médicos MB" className="h-10 w-10 grid place-items-center rounded-full bg-white/5 hover:bg-white/10 transition"><Instagram className="h-4 w-4" /></a>
+            <a href="https://www.facebook.com/share/1Q1P6YoTtr/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Servicios Médicos MB" className="h-10 w-10 grid place-items-center rounded-full bg-white/5 hover:bg-white/10 transition"><Facebook className="h-4 w-4" /></a>
           </div>
         </div>
       </div>
