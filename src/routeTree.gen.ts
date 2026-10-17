@@ -9,46 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TestimoniosRouteImport } from './routes/testimonios'
-import { Route as MedicoADomicilioRouteImport } from './routes/medico-a-domicilio'
-import { Route as GuiaProteccionRouteImport } from './routes/guia-proteccion'
-import { Route as EnfermeriaADomicilioRouteImport } from './routes/enfermeria-a-domicilio'
-import { Route as CuidadoraAdultoMayorRouteImport } from './routes/cuidadora-adulto-mayor'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CuidadoraAdultoMayorRouteImport } from './routes/cuidadora-adulto-mayor'
+import { Route as EnfermeriaADomicilioRouteImport } from './routes/enfermeria-a-domicilio'
+import { Route as GuiaProteccionRouteImport } from './routes/guia-proteccion'
+import { Route as MedicoADomicilioRouteImport } from './routes/medico-a-domicilio'
+import { Route as TestimoniosRouteImport } from './routes/testimonios'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminTestimoniosRouteImport } from './routes/_authenticated/admin.testimonios'
 
-const TestimoniosRoute = TestimoniosRouteImport.update({
-  id: '/testimonios',
-  path: '/testimonios',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MedicoADomicilioRoute = MedicoADomicilioRouteImport.update({
-  id: '/medico-a-domicilio',
-  path: '/medico-a-domicilio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GuiaProteccionRoute = GuiaProteccionRouteImport.update({
-  id: '/guia-proteccion',
-  path: '/guia-proteccion',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnfermeriaADomicilioRoute = EnfermeriaADomicilioRouteImport.update({
-  id: '/enfermeria-a-domicilio',
-  path: '/enfermeria-a-domicilio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CuidadoraAdultoMayorRoute = CuidadoraAdultoMayorRouteImport.update({
-  id: '/cuidadora-adulto-mayor',
-  path: '/cuidadora-adulto-mayor',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -56,13 +35,34 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const CuidadoraAdultoMayorRoute = CuidadoraAdultoMayorRouteImport.update({
+  id: '/cuidadora-adulto-mayor',
+  path: '/cuidadora-adulto-mayor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnfermeriaADomicilioRoute = EnfermeriaADomicilioRouteImport.update({
+  id: '/enfermeria-a-domicilio',
+  path: '/enfermeria-a-domicilio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaProteccionRoute = GuiaProteccionRouteImport.update({
+  id: '/guia-proteccion',
+  path: '/guia-proteccion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicoADomicilioRoute = MedicoADomicilioRouteImport.update({
+  id: '/medico-a-domicilio',
+  path: '/medico-a-domicilio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimoniosRoute = TestimoniosRouteImport.update({
+  id: '/testimonios',
+  path: '/testimonios',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
@@ -169,53 +169,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/testimonios': {
-      id: '/testimonios'
-      path: '/testimonios'
-      fullPath: '/testimonios'
-      preLoaderRoute: typeof TestimoniosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/medico-a-domicilio': {
-      id: '/medico-a-domicilio'
-      path: '/medico-a-domicilio'
-      fullPath: '/medico-a-domicilio'
-      preLoaderRoute: typeof MedicoADomicilioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guia-proteccion': {
-      id: '/guia-proteccion'
-      path: '/guia-proteccion'
-      fullPath: '/guia-proteccion'
-      preLoaderRoute: typeof GuiaProteccionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/enfermeria-a-domicilio': {
-      id: '/enfermeria-a-domicilio'
-      path: '/enfermeria-a-domicilio'
-      fullPath: '/enfermeria-a-domicilio'
-      preLoaderRoute: typeof EnfermeriaADomicilioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cuidadora-adulto-mayor': {
-      id: '/cuidadora-adulto-mayor'
-      path: '/cuidadora-adulto-mayor'
-      fullPath: '/cuidadora-adulto-mayor'
-      preLoaderRoute: typeof CuidadoraAdultoMayorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -225,11 +183,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cuidadora-adulto-mayor': {
+      id: '/cuidadora-adulto-mayor'
+      path: '/cuidadora-adulto-mayor'
+      fullPath: '/cuidadora-adulto-mayor'
+      preLoaderRoute: typeof CuidadoraAdultoMayorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enfermeria-a-domicilio': {
+      id: '/enfermeria-a-domicilio'
+      path: '/enfermeria-a-domicilio'
+      fullPath: '/enfermeria-a-domicilio'
+      preLoaderRoute: typeof EnfermeriaADomicilioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia-proteccion': {
+      id: '/guia-proteccion'
+      path: '/guia-proteccion'
+      fullPath: '/guia-proteccion'
+      preLoaderRoute: typeof GuiaProteccionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medico-a-domicilio': {
+      id: '/medico-a-domicilio'
+      path: '/medico-a-domicilio'
+      fullPath: '/medico-a-domicilio'
+      preLoaderRoute: typeof MedicoADomicilioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonios': {
+      id: '/testimonios'
+      path: '/testimonios'
+      fullPath: '/testimonios'
+      preLoaderRoute: typeof TestimoniosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
@@ -284,3 +284,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
