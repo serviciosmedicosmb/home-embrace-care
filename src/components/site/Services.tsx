@@ -28,8 +28,8 @@ const services = [
   {
     Icon: Users, title: "Cuidadora de adulto mayor a domicilio", img: elderlyImg,
     desc: "Acompañamiento, apoyo en la vida diaria y supervisión para adultos mayores que viven solos, tienen movilidad reducida o requieren apoyo permanente.",
-    heading: "Incluye según nivel de dependencia:",
-    rates: ["Turno de 8 horas: desde $38.990 por día", "Turno de 12 horas: desde $49.990 por día", "Cuidado de 24 horas: desde $99.990 por día"],
+    price: "Desde $39.990 por día", heading: "Incluye según nivel de dependencia:",
+    rates: ["Turno de 8 horas: desde $39.990 por día", "Turno de 12 horas: desde $49.990 por día", "Cuidado de 24 horas: desde $99.990 por día"],
     includes: ["Compañía y estimulación", "Preparación y apoyo en alimentación", "Recordatorio y supervisión de medicamentos", "Apoyo en higiene personal", "Prevención de caídas y acompañamiento en desplazamientos", "Reporte a la familia"],
     note: "No incluye: procedimientos clínicos, curaciones, traslados ni aseo general del hogar.",
     cta: "Solicitar cuidadora a domicilio", message: "Hola, quisiera solicitar una evaluación para el servicio de cuidadora de adulto mayor.",
