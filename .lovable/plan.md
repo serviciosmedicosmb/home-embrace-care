@@ -1,45 +1,20 @@
-## Objetivo
-Reemplazar la imagen de la sección "Consulta médica Online" por el nuevo archivo adjunto, guardándola como `src/assets/consulta-medica-online-v2.webp` con import estático Vite y eliminando toda referencia al archivo anterior.
+# Recuperar la compilación de Servicios Médicos MB
+
+## Diagnóstico (confirmado)
+- Hay un error que bloquea la compilación en `src/components/site/Trust.tsx`. En el commit "Update Trust.tsx" su contenido se reemplazó por una copia exacta de `Hero.tsx`, así que ahora exporta `Hero` y no `Trust`. La portada (`src/routes/index.tsx`) importa `{ Trust }` y Rollup falla con "Trust is not exported". Todos los commits siguientes (Services, Plans, Emotional, HowItWorks, CTA y Footer) heredan este error, aunque esos archivos no tienen problemas propios.
+- Hay un error secundario de tipos en `src/routes/__root.tsx`: tras la actualización de TanStack Router, `errorComponent` espera `ErrorComponentProps`. No bloquea `vite build`, pero sí la verificación de tipos.
 
 ## Cambios
+1. **Trust.tsx**: restaurar la sección anterior "¿Por qué las familias nos eligen?" (Trato humano, Seguridad y confianza, Respuesta rápida), con `export function Trust()` y el mismo texto y estilos que tenía antes del commit roto.
+2. **__root.tsx**: tipar `ErrorComponent` con `ErrorComponentProps` de `@tanstack/react-router`. No cambia nada visible.
+3. No se toca nada más. Hero, Telemedicine, Services, Plans, Emotional, HowItWorks, CTA, Footer, los precios, las imágenes, WhatsApp, las redes sociales, los formularios y WebPay/Mercado Pago se quedan como están.
 
-1. **Convertir y guardar la imagen** (PNG adjunto → WebP):
-   - Usar `python -c "from PIL import Image; Image.open('/mnt/user-uploads/file_00000000b978820e986d03e962719e04-2.png').save('src/assets/consulta-medica-online-v2.webp','WEBP',quality=88)"`.
-   - Verificar con `ls -la src/assets/consulta-medica-online-v2.webp`.
+## Validación
+- Ejecutar `npm run build` y la verificación de tipos, y confirmar que terminan sin errores.
+- Revisar que no falten imports ni exports en `src/components/site/*`.
+- Abrir la portada y confirmar que cada sección aparece una sola vez y en orden.
+- Si aparece otro error en el build, corregirlo con el mismo criterio mínimo.
 
-2. **`src/components/site/Telemedicine.tsx`**:
-   - Eliminar `import telemedicinaImage from "@/assets/telemedicina.jpg"`.
-   - Añadir `import consultaMedicaOnlineImage from "@/assets/consulta-medica-online-v2.webp"`.
-   - Reemplazar el bloque de imagen actual (líneas 43-62 del `<div className="relative min-h-[280px] lg:min-h-[440px]">` con los spans decorativos + `<img>`) por:
-     ```tsx
-     <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">
-       <span aria-hidden className="absolute -top-10 -left-10 h-64 w-64 rounded-full bg-[#00C4A8]/20 blur-2xl telemed-pulse" />
-       <span aria-hidden className="absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#7CC6FE]/25 blur-2xl" />
-       <img
-         src={consultaMedicaOnlineImage}
-         alt="Médico realizando una consulta médica online"
-         className="block w-full h-full object-cover object-center relative z-10"
-         loading="eager"
-         decoding="async"
-         width="900"
-         height="675"
-         onError={(event) => {
-           event.currentTarget.style.visibility = "hidden";
-           console.error("No se pudo cargar consulta-medica-online-v2.webp");
-         }}
-       />
-     </div>
-     ```
-   - Se preservan los círculos decorativos turquesa/celeste (que forman parte del diseño existente) dentro del nuevo contenedor con `aspect-[4/3]` que solicita el usuario.
-
-3. **Eliminar archivo anterior**: `rm src/assets/telemedicina.jpg` para que no queden referencias huérfanas.
-
-4. **Verificación**:
-   - `rg -n "telemedicina|telemedicinaImage" src/` debe retornar 0 coincidencias en archivos de imagen (el CSS `telemed-pulse` sí se mantiene, es una animación).
-   - `bun run build` para confirmar que el asset WebP se incluye sin 404.
-   - Playwright headless a 360/390/430 px cargando `/`, scroll hasta la sección, screenshot del bloque para confirmar render.
-
-## Guardrails
-- No tocar textos, precio, botón WhatsApp, colores, tipografías, animaciones ni otras secciones.
-- No modificar `src/routes/index.tsx` ni ningún otro componente.
-- La variable `src` recibe únicamente el import estático — sin strings de ruta.
+## GitHub y Cloudflare
+- Los cambios se sincronizan solos con el repositorio GitHub conectado.
+- No tengo acceso a tu cuenta de Cloudflare. Con el nuevo commit, Cloudflare debería volver a compilar por sí solo. Si no lo hace, hay que pulsar "Retry deployment" en el panel de Cloudflare.
