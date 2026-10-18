@@ -1,78 +1,43 @@
-import {
-  MessageCircle,
-  ClipboardList,
-  Clock,
-  UserRoundCheck,
-  BadgeCheck,
-  RefreshCw,
-} from "lucide-react";
-import heroImg from "@/assets/service-doctor.jpg";
-import { waLink } from "@/lib/contact";
+import { Heart, ShieldCheck, Zap } from "lucide-react";
 
-const benefits = [
-  { Icon: Clock, label: "Atención y coordinación 24/7 en Región Metropolitana" },
-  { Icon: UserRoundCheck, label: "Cuidadoras, enfermeras y médicos seleccionados y supervisados" },
-  { Icon: BadgeCheck, label: "Evaluación inicial sin costo y propuesta personalizada" },
-  { Icon: RefreshCw, label: "Reemplazo ante ausencias, según plan contratado" },
+const items = [
+  {
+    Icon: Heart,
+    title: "Trato humano",
+    desc: "Cada paciente es atendido con empatía, paciencia y respeto. Cuidamos como cuidaríamos a nuestra propia familia.",
+  },
+  {
+    Icon: ShieldCheck,
+    title: "Seguridad y confianza",
+    desc: "Equipo clínico certificado, protocolos estrictos y supervisión constante para la tranquilidad de tu familia.",
+  },
+  {
+    Icon: Zap,
+    title: "Respuesta rápida",
+    desc: "Coordinación inmediata por WhatsApp y atención disponible 24/7 en toda la Región Metropolitana.",
+  },
 ];
 
-export function Hero() {
+export function Trust() {
   return (
-    <section id="inicio" className="relative pt-28 md:pt-32 pb-16 md:pb-24 hero-gradient overflow-hidden">
-      <div className="absolute inset-0 radial-glow pointer-events-none" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div className="animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-4 py-2 text-xs font-semibold text-brand-deep border border-[color:var(--brand-soft)] shadow-soft">
-            <span className="h-2 w-2 rounded-full bg-[color:var(--whatsapp)] animate-pulse" />
-            Atención y coordinación 24/7 en Región Metropolitana
-          </span>
-
-          <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-display font-bold leading-[1.1] text-brand-deep">
-            Cuidado médico y acompañamiento profesional en{" "}
-            <span className="text-brand">tu hogar, en Santiago.</span>
-          </h1>
-
-          <p className="mt-6 text-lg text-ink max-w-xl leading-relaxed">
-            Médico a domicilio, enfermería, cuidadoras de adulto mayor y planes de atención integral
-            para familias que necesitan una respuesta rápida, segura y humana.
-          </p>
-
-          <p className="mt-4 max-w-xl text-base sm:text-lg font-semibold text-brand-deep leading-relaxed">
-            Evaluación inicial sin costo. Inicio coordinado en menos de 24 horas, según disponibilidad.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#contacto" className="btn-whatsapp">
-              <ClipboardList className="h-5 w-5" /> Agendar evaluación gratuita
-            </a>
-            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-outline">
-              <MessageCircle className="h-5 w-5" /> Hablar por WhatsApp
-            </a>
-          </div>
-
-          <ul className="mt-10 grid sm:grid-cols-2 gap-4 text-sm">
-            {benefits.map(({ Icon, label }) => (
-              <li key={label} className="flex items-start gap-2 text-brand-deep font-medium">
-                <span className="h-8 w-8 shrink-0 grid place-items-center rounded-full bg-brand-soft text-brand">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <span className="pt-1">{label}</span>
-              </li>
-            ))}
-          </ul>
+    <section className="py-20 md:py-28 bg-white">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto">
+          <p className="text-sm font-semibold text-brand uppercase tracking-wider">Confianza</p>
+          <h2 className="mt-3 text-3xl md:text-4xl font-display font-bold">¿Por qué las familias nos eligen?</h2>
+          <p className="mt-4 text-ink">Tres razones por las que somos la elección preferida en cuidado domiciliario premium.</p>
         </div>
 
-        <div className="relative animate-fade">
-          <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[color:var(--brand)]/20 to-transparent blur-2xl" aria-hidden />
-          <div className="relative rounded-[2rem] overflow-hidden shadow-card border border-white">
-            <img
-              src={heroImg}
-              alt="Médico profesional a domicilio atendiendo con calidez"
-              width={1280}
-              height={1280}
-              className="w-full h-auto object-cover object-[center_25%]"
-            />
-          </div>
+        <div className="mt-14 grid md:grid-cols-3 gap-6">
+          {items.map(({ Icon, title, desc }) => (
+            <article key={title} className="card-premium p-8 group">
+              <div className="h-14 w-14 rounded-2xl bg-brand-soft grid place-items-center text-brand group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                <Icon className="h-7 w-7" strokeWidth={1.75} />
+              </div>
+              <h3 className="mt-6 text-xl font-display font-bold">{title}</h3>
+              <p className="mt-3 text-ink leading-relaxed">{desc}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
