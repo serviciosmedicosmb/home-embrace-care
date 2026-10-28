@@ -1,9 +1,8 @@
 const GOOGLE_ADS_WHATSAPP_CONVERSION =
-  "AW-18197430103/cviiCL7y5KwdENf-muVD";
+  "AW-18197430103/6KNdCIfpi60dENf-muVD";
 
 declare global {
   interface Window {
-    dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
   }
 }
@@ -11,17 +10,9 @@ declare global {
 export function trackWhatsAppClick() {
   if (typeof window === "undefined") return;
 
-  if (typeof window.gtag === "function") {
-    window.gtag("event", "conversion", {
-      send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
-    });
-    return;
-  }
+  if (typeof window.gtag !== "function") return;
 
-  if (Array.isArray(window.dataLayer)) {
-    window.dataLayer.push({
-      event: "conversion",
-      send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
-    });
-  }
+  window.gtag("event", "conversion", {
+    send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
+  });
 }
