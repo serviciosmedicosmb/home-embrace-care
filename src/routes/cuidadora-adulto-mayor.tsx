@@ -135,7 +135,7 @@ function CuidadoraAdultoMayorPage() {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const msg = `Hola, solicito cuidadora de adulto mayor.%0A%0ANombre: ${form.nombre}%0ATeléfono: ${form.telefono}%0AServicio: ${form.servicio}%0AMensaje: ${form.mensaje}`;
-    window.open(`https://wa.me/56965824407?text=${msg}`, "_blank");
+    window.open(`https://wa.me/56982752313?text=${msg}`, "_blank");
   };
 
   const trustItems = [

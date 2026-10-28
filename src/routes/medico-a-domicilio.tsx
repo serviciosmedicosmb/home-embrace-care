@@ -80,7 +80,7 @@ function MedicoDomicilioPage() {
                 <a href={waLink("Hola, quiero coordinar una consulta médica a domicilio.")} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
                   <MessageCircle className="h-5 w-5" /> WhatsApp inmediato
                 </a>
-                <a href="tel:+56965824407" className="btn-outline">
+                <a href="tel:+56982752313" className="btn-outline">
                   <Phone className="h-5 w-5" /> Llamar ahora
                 </a>
               </div>
@@ -224,7 +224,7 @@ function MedicoDomicilioPage() {
               <a href={waLink("Hola, necesito un médico a domicilio.")} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
                 <MessageCircle className="h-5 w-5" /> Contactar por WhatsApp
               </a>
-              <a href="tel:+56965824407" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-display font-semibold text-brand-deep transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card">
+              <a href="tel:+56982752313" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-display font-semibold text-brand-deep transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card">
                 <Phone className="h-5 w-5" /> Llamar ahora
               </a>
             </div>
