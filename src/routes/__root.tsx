@@ -102,13 +102,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18197430103"></script>
         <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'AW-18197430103');`,
-          }}
-        />
+  dangerouslySetInnerHTML={{
+    __html: `window.dataLayer = window.dataLayer || [];
+window.gtag = function(){window.dataLayer.push(arguments);}
+window.gtag('js', new Date());
+window.gtag('config', 'AW-18197430103');`,
+  }}
+/>
       </head>
       <body>
         {children}
