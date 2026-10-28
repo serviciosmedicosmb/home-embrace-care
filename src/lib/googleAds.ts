@@ -3,6 +3,7 @@ const GOOGLE_ADS_WHATSAPP_CONVERSION =
 
 declare global {
   interface Window {
+    dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
   }
 }
@@ -10,9 +11,17 @@ declare global {
 export function trackWhatsAppClick() {
   if (typeof window === "undefined") return;
 
-  if (typeof window.gtag !== "function") return;
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "conversion", {
+      send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
+    });
+    return;
+  }
 
-  window.gtag("event", "conversion", {
-    send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
-  });
+  if (Array.isArray(window.dataLayer)) {
+    window.dataLayer.push({
+      event: "conversion",
+      send_to: GOOGLE_ADS_WHATSAPP_CONVERSION,
+    });
+  }
 }
